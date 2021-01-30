@@ -1,0 +1,21 @@
+.recommendSongContainer .header {
+  position: relative;
+  width: 100%;
+  height: 330rpx;
+}
+
+.recommendSongContainer .header image{
+  width: 100%;
+  height: 100%;
+}
+
+.recommendSongContainer .header .date {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(0rpx,-5rpx);
+  /* width: 300px; */
+  color: #FF9156;
+  font-size: 85rpx;
+  font-weight: 700;
+}

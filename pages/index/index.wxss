@@ -1,0 +1,116 @@
+.banners {
+  width: 100%;
+  height: 350rpx;
+}
+
+.banners image {
+  width: 100%;
+  height: 100%;
+}
+
+.navContainer {
+  display: flex;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+}
+
+.navItem .iconfont {
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background-color: #af4cd6;
+  border-radius: 50%;
+  margin: 20rpx 0;
+  color: #FFF;
+  font-size: 40rpx;
+}
+
+.navItem text {
+  font-size: 26rpx;
+}
+
+.recommendContainer {
+  padding: 20rpx;
+}
+
+.recommendScroll {
+  display: flex;
+  height: 285rpx;
+}
+
+.scrollItem {
+  width: 200rpx;
+  margin-right: 20rpx;
+}
+
+.scrollItem image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+
+.scrollItem text {
+  font-size: 26rpx;
+  /* 单行文本省略 */
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block; */
+
+  /* 多行文本省略 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.topList {
+  padding: 0 20rpx;
+}
+
+.topListSwiper {
+  height: 450rpx;
+}
+
+.swiperItem {
+  width: 95%; 
+  background-color: #e8e8f34f;
+}
+
+.swiperItem .title {
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+
+.musicItem {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.musicItem image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 6rpx;
+}
+
+.musicItem .count {
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.musicItem .musicName {
+  height: 100rpx;
+  line-height: 100rpx;
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
