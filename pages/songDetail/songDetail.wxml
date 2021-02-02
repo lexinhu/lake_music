@@ -1,0 +1,18 @@
+<view class="songDetailContainer">
+  <view class="author">{{song.ar[0].name}}</view>
+  <view class="circle"></view>
+  <image class="needle {{isPlay && 'needleRotate'}}" src="/static/images/song/needle.png"></image>
+  <view class="discContainer {{isPlay && 'discAnimation'}}">
+    <image class="disc" src="/static/images/song/disc.png"></image>
+    <image class="musicImg" src="{{song.al.picUrl}}"></image>
+  </view>
+
+  <!-- 底部播放区域 -->
+  <view class="musicController">
+    <text class="iconfont icon-danquxunhuan"></text>
+    <text class="iconfont icon-shangyishou" id="pre" bindtap="switchMusic"></text>
+    <text class="big iconfont {{isPlay? 'icon-zantingtingzhi' : 'icon-kaishibofang'}}" bindtap="handleMusicPlay"></text>
+    <text class="iconfont icon-xiayishou" id="next" bindtap="switchMusic"></text>
+    <text class="iconfont icon-yinleliebiao"></text>
+  </view>
+</view>

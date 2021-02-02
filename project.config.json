@@ -21,8 +21,9 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -82,6 +83,13 @@
         {
           "name": "pages/recommendSong/recommendSong",
           "pathName": "pages/recommendSong/recommendSong",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/songDetail/songDetail",
+          "pathName": "pages/songDetail/songDetail",
+          "query": "",
           "scene": null
         }
       ]

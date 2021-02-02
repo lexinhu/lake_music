@@ -1,4 +1,3 @@
-
 import request from '../../utils/request'
 
 Page({
@@ -24,7 +23,7 @@ Page({
       wx.showToast({
         title: '请先登录',
         icon: 'loading',
-        duration: 2000
+        duration: 1500
       })
       return;
     }
@@ -48,7 +47,10 @@ Page({
     if (!navId) {
       return;
     }
-    let videoListData = await request('/video/group', { id: navId });
+    let videoListData = await request('/video/group', {
+      id: navId,
+      timestamp: Date.parse(new Date())
+    });
     wx.hideLoading()
     let index = 0;
     let videoList = videoListData.datas.map(item => {
@@ -87,12 +89,12 @@ Page({
   },
 
   // 自定义下拉刷新的回调
-  handleRefresher(){
+  handleRefresher() {
     this.getVideoListData(this.data.navId)
   },
 
   // 自定义上拉触底的回调
-  handleToLower(){
+  handleToLower() {
 
   },
 
@@ -142,6 +144,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })

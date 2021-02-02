@@ -33,9 +33,9 @@ Page({
 
   // 获取用户播放记录
   async getUserRecentPlayList(userId) {
-    let recentPlayListData = await request('/user/record', { uid: userId, type: 0 });
+    let recentPlayListData = await request('/user/record', { uid: userId, type: 1 });
     let index = 0;
-    let recentPlayList = recentPlayListData.allData.splice(0, 10).map(item => {
+    let recentPlayList = recentPlayListData.weekData.map(item => {
       item.id = index++;
       return item;
     })

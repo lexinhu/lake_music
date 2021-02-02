@@ -6,4 +6,21 @@
       <text class="month">{{month}}</text>
     </view>
   </view>
+  <view class="ListContainer">
+    <view class="listHeader">
+      <text>播放全部</text>
+      <text class="changeMore">多选</text>
+    </view>
+    <!-- 内容区 -->
+    <scroll-view class="listScroll" scroll-y>
+      <view class="scrollItem" wx:for="{{recommendList}}" wx:key="id" data-song="{{item}}" bindtap="toSongDetail">
+        <image src="{{item.album.picUrl}}"></image>
+        <view class="musicInfo">
+          <text class="musicName">{{item.name}}</text>
+          <text class="author">{{item.artists[0].name}} - {{item.album.name}}</text>
+        </view>
+        <text class="iconfont icon-gengduo"></text>
+      </view>
+    </scroll-view>
+  </view>
 </view>

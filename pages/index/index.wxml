@@ -10,7 +10,7 @@
   <view class="navContainer">
     <view class="navItem">
       <text class="iconfont icon-tuijian"></text>
-      <text>推荐</text>
+      <text>每日推荐</text>
     </view>
     <view class="navItem">
       <text class="iconfont icon-playlist"></text>
@@ -24,15 +24,15 @@
       <text class="iconfont icon-diantai"></text>
       <text>电台</text>
     </view>
-    <view class="navItem">
+    <!-- <view class="navItem">
       <text class="iconfont icon-zhibobofangshexiangjiguankanxianxing"></text>
       <text>直播</text>
-    </view>
+    </view> -->
   </view>
   <!-- 推荐歌曲区域 -->
   <view class="recommendContainer">
     <!-- 头部区域 -->
-    <NavHeader title='推荐歌单' nav='为你精心推荐'></NavHeader>
+    <NavHeader title='推荐歌单' nav='为你精心挑选'></NavHeader>
     <!-- 内容区域 -->
     <scroll-view class="recommendScroll" enable-flex scroll-x>
       <view class="scrollItem" wx:for="{{recommendList}}" wx:key='id' wx:for-item='recommendItem'>

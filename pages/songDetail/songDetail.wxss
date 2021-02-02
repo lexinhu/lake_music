@@ -1,0 +1,124 @@
+.songDetailContainer {
+  height: 100%;
+  background: linear-gradient(#CCCCFF, rgba(105, 88, 75, 0.863));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author {
+  font-size: 28rpx;
+}
+
+/* 底座 */
+.circle {
+  position: relative;
+  z-index: 5;
+  width: 65rpx;
+  height: 65rpx;
+  border-radius: 50%;
+  background: #fff;
+  margin: 10rpx 0;
+}
+
+/* 摇杆 */
+.needle {
+  position: relative;
+  z-index: 4;
+  top: -40rpx;
+  left: 57rpx;
+  width: 192rpx;
+  height: 274rpx;
+  /* 场景需求，调整旋转中心点 */
+  transform-origin: 20rpx 0;
+  /* 旋转角度 -20 */
+  transform: rotate(-20deg);
+  /* 旋转时间 1秒 */
+  transition: transform 1s;
+}
+
+/* 摇杆抬下，音乐播放时 */
+.needleRotate {
+  /* 不旋转，故角度设置为0 */
+  transform: rotate(0deg);
+}
+
+/* 磁盘 */
+.discContainer {
+  position: relative;
+  z-index: 3;
+  top: -170rpx;
+  width: 598rpx;
+  height: 598rpx;
+}
+
+/* 磁盘转圈动画，音乐播放时 */
+.discAnimation {
+  /* 
+    animation-name：绑定到选择器的 keyframe 的名称。
+    animation-duration：完成动画所花费的时间 
+    animation-timing-function：规定动画的速度曲线。  
+      linear 动画从头到尾的速度是相同的。
+    animation-delay：在动画开始之前的延迟时间。
+      延迟 1秒 等摇杆下来再开始旋转
+    animation-iteration-count：动画应该播放的次数。
+      infinite 无线循环
+  */
+  animation: disc 6s linear 1s infinite;
+}
+
+/* 
+  @keyframes 用来设置动画帧
+    from to
+      - 适用于简单的动画，只有起始帧和结束帧
+    百分比
+      - 多用于复杂动画，不止两帧
+*/
+@keyframes disc {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.disc {
+  width: 598rpx;
+  height: 598rpx;
+}
+
+.musicImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 370rpx;
+  height: 370rpx;
+  border-radius: 50%;
+}
+
+/* 底部控制区 */
+.musicController {
+  position: absolute;
+  bottom: 60rpx;
+  left: 0;
+  width: 100%;
+  display: flex;
+}
+
+.musicController text {
+  width: 20%;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
+  font-size: 65rpx;
+  color: rgba(124, 85, 40, 0.863);
+}
+
+.musicController text.big {
+  font-size: 120rpx;
+}

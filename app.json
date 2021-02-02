@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/video/video",
     "pages/login/login",
-    "pages/recommendSong/recommendSong"
+    "pages/recommendSong/recommendSong",
+    "pages/songDetail/songDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,8 +18,7 @@
     "color": "#333",
     "selectedColor": "#666699",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "主页",
         "iconPath": "/static/images/tabs/index.png",
@@ -32,12 +32,13 @@
       },
       {
         "pagePath": "pages/personal/personal",
-        "text": "个人中心",
+        "text": "我的",
         "iconPath": "/static/images/tabs/personal.png",
         "selectedIconPath": "/static/images/tabs/personal_select.png"
       }
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": ["audio"]
 }
