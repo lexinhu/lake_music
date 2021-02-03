@@ -6,7 +6,19 @@
     <image class="disc" src="/static/images/song/disc.png"></image>
     <image class="musicImg" src="{{song.al.picUrl}}"></image>
   </view>
-
+  <!-- 音乐播放进度条 -->
+  <view class="progressControl">
+    <text>{{currentTime}}</text>
+    <!-- 总进度条 -->
+    <view class="barControl">
+      <!-- 正在播放的进度条 -->
+      <view class="audio-currentTime-bar">
+        <!-- 小圆球 -->
+        <view class="audio-circle"></view>
+      </view>
+    </view>
+    <text>{{durationTime}}</text>
+  </view>
   <!-- 底部播放区域 -->
   <view class="musicController">
     <text class="iconfont icon-danquxunhuan"></text>

@@ -1,4 +1,7 @@
 import request from '../../utils/request'
+import PubSub from 'pubsub-js'
+import moment from 'moment'
+
 const appInstance = getApp()
 Page({
   /**
@@ -8,6 +11,9 @@ Page({
     isPlay: false,
     song: {},
     musicId: '',
+    musicLink: '', // 当前播放的音乐链接
+    currentTime: '00:00', // 实时时间
+    durationTime: '00:00' // 总时长
   },
 
   /**
@@ -70,27 +76,26 @@ Page({
 
   // 点击播放/暂停按钮
   handleMusicPlay() {
-    console.log("handleMusicPlay");
     let isPlay = !this.data.isPlay
-    console.log(isPlay);
-    // 已经添加了监听函数，这里就不需要了
-    // this.setData({
-    //   isPlay
-    // })
-    this.musicController(isPlay)
+    let {
+      musicId,
+      musicLink
+    } = this.data
+    this.musicController(isPlay, musicId, musicLink)
   },
 
   // 音乐播放/暂停
-  async musicController(isPlay) {
+  async musicController(isPlay, musicId, musicLink) {
     if (isPlay) {
-      // 获取音乐播放链接
-      let {
-        musicId
-      } = this.data
-      let musicLinkData = await request('/song/url', {
-        id: musicId
-      })
-      let musicLink = musicLinkData.data[0].url
+      if (!musicLink) {
+        let musicLinkData = await request('/song/url', {
+          id: musicId
+        })
+        musicLink = musicLinkData.data[0].url
+        this.setData({
+          musicLink
+        })
+      }
       // 音乐播放
       this.audioManager.title = this.data.song.name
       this.audioManager.src = musicLink
@@ -103,8 +108,23 @@ Page({
 
   // 切换歌曲
   switchMusic(event) {
+    // 切歌类型 上一首下一首
     let type = event.currentTarget.id
-    console.log(type);
+    // 关闭当前的播放音乐
+    this.audioManager.stop()
+    // 订阅来自 recommendSong 的事件
+    PubSub.subscribe('musicId', (msg, musicId) => {
+      this.setData({
+        musicId
+      })
+      // 获取音乐详细
+      this.getMusicInfo(musicId)
+      this.musicController(true, musicId)
+      // 取消订阅
+      PubSub.unsubscribe('musicId')
+    })
+    // 发布消息给 recommendSong 页面
+    PubSub.publish('switchType', type)
   },
 
   /**

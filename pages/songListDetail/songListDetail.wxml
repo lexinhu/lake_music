@@ -1,0 +1,13 @@
+
+<view class="songListDetailContainer">
+  <view class="header">
+    <image src="/static/images/g8y7rd.jpg"></image>
+    <view class="info">
+      <view class="name">冬季限定|想和你写一个关于冬天的故事</view>
+      <view class="author">PeterMckinnon</view>
+    </view>
+  </view>
+  <view class="songs">
+
+  </view>
+</view>

@@ -1,4 +1,6 @@
 import request from '../../utils/request'
+import PubSub from 'pubsub-js'
+import moment from 'moment'
 
 Page({
 
@@ -8,7 +10,8 @@ Page({
   data: {
     day: '', // 天
     month: '', // 月
-    recommendList: [] // 每日推荐音乐 
+    recommendList: [], // 每日推荐音乐 
+    index: 0, // 点击音乐的下标
   },
 
   /**
@@ -28,14 +31,14 @@ Page({
       return;
     }
 
-    let day = new Date().getDate();
-    let month = new Date().getMonth() + 1;
-    if (day < 10) {
-      day = "0" + day
-    }
-    if (month < 10) {
-      month = "0" + month
-    }
+    let day = moment().format('DD')
+    let month = moment().format('MM')
+    // if (day < 10) {
+    //   day = "0" + day
+    // }
+    // if (month < 10) {
+    //   month = "0" + month
+    // }
     // 更新日期
     this.setData({
       day,
@@ -43,6 +46,36 @@ Page({
     })
 
     this.getRecommendList()
+
+    // 订阅来自 songDetail 页面的事件
+    PubSub.subscribe('switchType', (msg, data) => {
+      let {
+        recommendList,
+        index
+      } = this.data
+      if (data === 'pre') {
+        // 上一首
+        if (index === 0) {
+          index = recommendList.length - 1
+        } else {
+          index -= 1
+        }
+      } else {
+        // 下一首
+        if (index === recommendList.length - 1) {
+          index = 0
+        } else {
+          index += 1
+        }
+      }
+
+      this.setData({
+        index
+      })
+
+      let musicId = recommendList[index].id
+      PubSub.publish('musicId', musicId)
+    })
   },
 
   // 获取用户每日推荐音乐
@@ -55,7 +88,13 @@ Page({
 
   // 跳转到音乐播放详细页
   toSongDetail(event) {
-    let song = event.currentTarget.dataset.song
+    let {
+      song,
+      index
+    } = event.currentTarget.dataset
+    this.setData({
+      index
+    })
     wx.navigateTo({
       // 不能直接传递 song 对象，长度过长会被截取掉。
       url: '/pages/songDetail/songDetail?musicId=' + song.id,

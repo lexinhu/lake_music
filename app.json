@@ -5,7 +5,8 @@
     "pages/video/video",
     "pages/login/login",
     "pages/recommendSong/recommendSong",
-    "pages/songDetail/songDetail"
+    "pages/songDetail/songDetail",
+    "pages/songListDetail/songListDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,5 +41,7 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "requiredBackgroundModes": ["audio"]
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }

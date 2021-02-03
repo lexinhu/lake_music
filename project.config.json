@@ -12,7 +12,7 @@
     "minified": true,
     "newFeature": false,
     "coverView": true,
-    "nodeModules": false,
+    "nodeModules": true,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
@@ -20,7 +20,7 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
+    "compileHotReLoad": true,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
     "useApiHostProcess": true,
@@ -89,6 +89,12 @@
         {
           "name": "pages/songDetail/songDetail",
           "pathName": "pages/songDetail/songDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/songListDetail/songListDetail",
+          "pathName": "pages/songListDetail/songListDetail",
           "query": "",
           "scene": null
         }
