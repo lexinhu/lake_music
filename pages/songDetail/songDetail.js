@@ -13,28 +13,45 @@ Page({
     musicId: '',
     musicLink: '', // 当前播放的音乐链接
     currentTime: '00:00', // 实时时间
-    durationTime: '00:00' // 总时长
+    durationTime: '00:00', // 总时长
+    currentWidth: 0, // 实时进度条的宽度
+    durationWidth: 0, // 进度条的总宽度
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    // 获取播放进度条总宽度
+    const query = wx.createSelectorQuery()
+    query.select('.barControl').boundingClientRect()
+    query.exec((res) => {
+      this.setData({
+        durationWidth: res[0].width
+      })
+    })
+
     this.setData({
       musicId: options.musicId
     })
+    // 获取音乐详细
     this.getMusicInfo(options.musicId)
 
-    // 判断当前音乐是否在播放
+    // 创建音乐控件
+    this.audioManager = wx.getBackgroundAudioManager()
+
+    // 判断当前音乐是否在播放 
+    // 若不是当前音乐在播放，停止上一首音乐
     if (appInstance.globalData.isMusicPlay && appInstance.globalData.musicId === options.musicId) {
       // 修改当前页面音乐是否在播放
       this.setData({
         isPlay: true
       })
+    } else {
+      this.audioManager.stop()
     }
 
-    // 创建音乐控件
-    this.audioManager = wx.getBackgroundAudioManager()
     // 监听音乐控件的播放/暂停/停止，让其与 isPlay 属性同步
     this.audioManager.onPlay(() => {
       this.changePlayState(true)
@@ -46,8 +63,27 @@ Page({
     this.audioManager.onStop(() => {
       this.changePlayState(false)
     })
+    // 监听音乐自然结束
     this.audioManager.onEnded(() => {
-      this.changePlayState(false)
+      let {
+        isPlay,
+        musicId,
+        musicLink
+      } = this.data
+      this.musicController(isPlay, musicId, musicLink)
+    })
+    // 监听音乐实时播放的进度
+    this.audioManager.onTimeUpdate(() => {
+      // 计算实时播放的时间
+      let currentTime = moment(this.audioManager.currentTime * 1000).format('mm:ss')
+      // 计算实时播放的长度
+      // currentTime/durationTime = currentWidth/总宽度
+      let currentWidth = this.audioManager.currentTime / this.audioManager.duration * this.data.durationWidth
+
+      this.setData({
+        currentTime,
+        currentWidth
+      })
     })
   },
 
@@ -65,8 +101,10 @@ Page({
     let songData = await request('/song/detail', {
       ids: musicId
     })
+    let durationTime = moment(songData.songs[0].dt).format('mm:ss')
     this.setData({
       song: songData.songs[0],
+      durationTime
     })
     // 动态修改窗口标题
     wx.setNavigationBarTitle({
@@ -119,6 +157,7 @@ Page({
       })
       // 获取音乐详细
       this.getMusicInfo(musicId)
+      // 自动播放当前音乐
       this.musicController(true, musicId)
       // 取消订阅
       PubSub.unsubscribe('musicId')

@@ -141,7 +141,7 @@
 .barControl {
   position: relative;
   /* width: 480rpx; */
-  width: 100%;
+  width: 480rpx;
   height: 6rpx;
   background: rgba(0, 0, 0, 0.4);
   margin: auto;
@@ -152,7 +152,6 @@
   top: 0;
   left: 0;
   z-index: 1;
-  width: 100rpx;
   height: 6rpx;
   background: rgb(185, 128, 41);
 }

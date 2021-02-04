@@ -12,7 +12,7 @@
     <!-- 总进度条 -->
     <view class="barControl">
       <!-- 正在播放的进度条 -->
-      <view class="audio-currentTime-bar">
+      <view class="audio-currentTime-bar" style="width: {{currentWidth + 'px'}}">
         <!-- 小圆球 -->
         <view class="audio-circle"></view>
       </view>
