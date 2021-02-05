@@ -32,6 +32,7 @@ Page({
       })
     })
 
+
     this.setData({
       musicId: options.musicId
     })
@@ -41,9 +42,13 @@ Page({
     // 创建音乐控件
     this.audioManager = wx.getBackgroundAudioManager()
 
+    console.log(typeof appInstance.globalData.musicId);
+    console.log(typeof this.data.musicId);
     // 判断当前音乐是否在播放 
     // 若不是当前音乐在播放，停止上一首音乐
-    if (appInstance.globalData.isMusicPlay && appInstance.globalData.musicId === options.musicId) {
+    if (appInstance.globalData.isMusicPlay && appInstance.globalData.musicId + '' == this.data.musicId) {
+      console.log("appInstance.globalData.musicId" + appInstance.globalData.musicId);
+      console.log("options.musicId" + this.data.musicId);
       // 修改当前页面音乐是否在播放
       this.setData({
         isPlay: true
@@ -55,7 +60,9 @@ Page({
     // 监听音乐控件的播放/暂停/停止，让其与 isPlay 属性同步
     this.audioManager.onPlay(() => {
       this.changePlayState(true)
-      appInstance.globalData.musicId = options.musicId
+      appInstance.globalData.musicId = this.data.musicId
+      console.log("appInstance.globalData.musicId" + appInstance.globalData.musicId);
+      console.log("options.musicId" + this.data.musicId);
     })
     this.audioManager.onPause(() => {
       this.changePlayState(false)
@@ -153,12 +160,14 @@ Page({
     // 订阅来自 recommendSong 的事件
     PubSub.subscribe('musicId', (msg, musicId) => {
       this.setData({
-        musicId
+        musicId: musicId
       })
+
       // 获取音乐详细
       this.getMusicInfo(musicId)
       // 自动播放当前音乐
       this.musicController(true, musicId)
+
       // 取消订阅
       PubSub.unsubscribe('musicId')
     })

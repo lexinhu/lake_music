@@ -1,10 +1,26 @@
 <view class="songListDetailContainer">
   <view class="header">
-    <image src="/static/images/g8y7rd.jpg"></image>
+    <image src="{{songList.coverImgUrl}}"></image>
     <view class="info">
-      <view class="name">冬季限定|想和你写一个关于冬天的故事</view>
-      <view class="author">PeterMckinnon</view>
+      <view class="name">{{songList.name}}</view>
+      <view class="author">by {{songList.creator.nickname}}</view>
     </view>
   </view>
-  <view class="songs"></view>
+  <view class="ListContainer">
+    <view class="listHeader">
+      <text>播放全部</text>
+      <text class="changeMore">多选</text>
+    </view>
+    <!-- 内容区 -->
+    <scroll-view class="listScroll" scroll-y>
+      <view class="scrollItem" wx:for="{{songList.tracks}}" wx:key="id" data-index="{{index}}" data-song="{{item}}" bindtap="toSongDetail">
+        <image src="{{item.al.picUrl}}"></image>
+        <view class="musicInfo">
+          <text class="musicName">{{item.name}}</text>
+          <text class="author">{{item.ar[0].name}} - {{item.al.name}}</text>
+        </view>
+        <text class="iconfont icon-gengduo"></text>
+      </view>
+    </scroll-view>
+  </view>
 </view>

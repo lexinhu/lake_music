@@ -26,13 +26,72 @@
   align-items: flex-start;
 }
 
-.header .info .name{
+.header .info .name {
   color: rgb(243, 240, 240);
   font-size: 32rpx;
 }
 
-.header .info .author{
+.header .info .author {
   color: rgb(97, 94, 94);
   font-size: 28rpx;
-  margin: 20rpx 0 ;
+  margin: 20rpx 0;
+}
+
+/* 列表区域 */
+.ListContainer {
+  position: relative;
+  top: -20rpx;
+  padding: 0 20rpx;
+  border-radius: 30rpx;
+  background: #fff;
+}
+
+.listHeader {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.listHeader .changeMore {
+  float: right;
+}
+
+.listScroll {
+  height: calc(100vh - 410rpx);
+}
+
+.scrollItem {
+  position: relative;
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.scrollItem image {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 10rpx;
+}
+
+.musicInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.musicInfo text {
+  height: 45rpx;
+  line-height: 45rpx;
+  font-size: 24rpx;
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scrollItem .iconfont {
+  position: absolute;
+  right: 0;
+  width: 90rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: right;
 }

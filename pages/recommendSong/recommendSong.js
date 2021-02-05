@@ -74,6 +74,7 @@ Page({
       })
 
       let musicId = recommendList[index].id
+      console.log(musicId);
       PubSub.publish('musicId', musicId)
     })
   },
@@ -126,7 +127,10 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    /**
+     * 取消全部订阅
+     */
+    PubSub.clearAllSubscriptions()
   },
 
   /**

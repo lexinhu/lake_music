@@ -72,14 +72,23 @@ Page({
       })
 
       let musicId = topList[listIndex].tracks[musicIndex].id
+      console.log(musicId);
       PubSub.publish('musicId', musicId)
     })
   },
 
   // 跳转至 recommendSong
   toRecommendSong() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/recommendSong/recommendSong'
+    })
+  },
+
+  // 跳转至 songListDetail
+  toSongListDetail(event) {
+    console.log(event.currentTarget.dataset.id);
+    wx.redirectTo({
+      url: '/pages/songListDetail/songListDetail?id=' + event.currentTarget.dataset.id
     })
   },
 
@@ -127,7 +136,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('index');
+    /**
+     * 取消全部订阅
+     */
+    PubSub.clearAllSubscriptions()
   },
 
   /**

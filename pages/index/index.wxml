@@ -34,7 +34,7 @@
     <NavHeader title='推荐歌单' nav='为你精心挑选'></NavHeader>
     <!-- 内容区域 -->
     <scroll-view class="recommendScroll" enable-flex scroll-x>
-      <view class="scrollItem" wx:for="{{recommendList}}" wx:key='id' wx:for-item='recommendItem'>
+      <view class="scrollItem" wx:for="{{recommendList}}" wx:key='id' wx:for-item='recommendItem' data-id="{{recommendItem.id}}" bindtap='toSongListDetail'>
         <image src="{{recommendItem.picUrl}}"></image>
         <text>{{recommendItem.name}}</text>
       </view>
