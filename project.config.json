@@ -1,7 +1,10 @@
 {
   "description": "项目配置文件",
   "packOptions": {
-    "ignore": []
+    "ignore": [{
+      "type": "folder",
+      "value": "lakeMusic_api_server"
+    }]
   },
   "setting": {
     "urlCheck": false,
@@ -61,8 +64,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
+      "list": [{
           "name": "pages/personal/personal",
           "pathName": "pages/personal/personal",
           "query": "",
