@@ -86,7 +86,6 @@ Page({
 
   // 跳转至 songListDetail
   toSongListDetail(event) {
-    console.log(event.currentTarget.dataset.id);
     wx.redirectTo({
       url: '/pages/songListDetail/songListDetail?id=' + event.currentTarget.dataset.id
     })
