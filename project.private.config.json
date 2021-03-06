@@ -1,0 +1,58 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/personal/personal",
+          "pathName": "pages/personal/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/video/video",
+          "pathName": "pages/video/video",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/recommendSong/recommendSong",
+          "pathName": "pages/recommendSong/recommendSong",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/songDetail/songDetail",
+          "pathName": "pages/songDetail/songDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/songListDetail/songListDetail",
+          "pathName": "pages/songListDetail/songListDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/search/search",
+          "pathName": "pages/search/search",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

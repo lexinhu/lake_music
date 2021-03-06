@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 10rpx;
+}
+.searchInput {
+  flex: 1;
+  background: rgba(237, 237, 237, 0.3);
+  border-radius: 30rpx;
+}
+.cancel {
+  width: 100rpx;
+  text-align: center;
+}

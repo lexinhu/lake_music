@@ -1,10 +1,12 @@
 {
   "description": "项目配置文件",
   "packOptions": {
-    "ignore": [{
-      "type": "folder",
-      "value": "lakeMusic_api_server"
-    }]
+    "ignore": [
+      {
+        "type": "folder",
+        "value": "lakeMusic_api_server"
+      }
+    ]
   },
   "setting": {
     "urlCheck": false,
@@ -23,7 +25,7 @@
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
-    "compileHotReLoad": true,
+    "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
     "useApiHostProcess": true,
@@ -64,7 +66,8 @@
       "list": []
     },
     "miniprogram": {
-      "list": [{
+      "list": [
+        {
           "name": "pages/personal/personal",
           "pathName": "pages/personal/personal",
           "query": "",

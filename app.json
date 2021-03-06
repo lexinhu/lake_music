@@ -6,7 +6,8 @@
     "pages/login/login",
     "pages/recommendSong/recommendSong",
     "pages/songDetail/songDetail",
-    "pages/songListDetail/songListDetail"
+    "pages/songListDetail/songListDetail",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,7 +20,8 @@
     "color": "#333",
     "selectedColor": "#666699",
     "backgroundColor": "#ffffff",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "主页",
         "iconPath": "/static/images/tabs/index.png",

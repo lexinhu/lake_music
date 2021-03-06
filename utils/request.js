@@ -1,4 +1,3 @@
-
 import config from '../config/config'
 
 export default (url, data = {}, method = 'GET') => {

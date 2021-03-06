@@ -1,0 +1,9 @@
+<view class="searchContainer">
+  <!-- 搜索区 -->
+  <view class="header">
+    <view class="searchInput">
+      <input type="text" placeholder="搜索歌曲" />
+    </view>
+    <text class="cancel">取消</text>
+  </view>
+</view>
