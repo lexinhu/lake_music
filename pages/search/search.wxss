@@ -2,14 +2,61 @@
   display: flex;
   height: 60rpx;
   line-height: 60rpx;
-  padding: 10rpx;
+  padding: 15rpx 0;
 }
+
 .searchInput {
   flex: 1;
   background: rgba(237, 237, 237, 0.3);
   border-radius: 30rpx;
+  position: relative;
 }
+
 .cancel {
   width: 100rpx;
   text-align: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 15rpx;
+}
+
+.searchInput input {
+  margin-left: 55rpx;
+  height: 60rpx;
+}
+
+.hotContainer {
+  padding: 0 20rpx 20rpx 20rpx;
+}
+
+/* 热搜榜样式 */
+.hostContainer .title {
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid rgba(238, 238, 238, 0.486);
+}
+
+.hotList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotItem {
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+}
+
+.hotItem .order {
+  margin: 0 10rpx;
+}
+
+.hotItem .iconImg{
+  width: 35rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
 }

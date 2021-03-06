@@ -1,20 +1,30 @@
-// pages/search/search.js
+import request from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    placeholderContent: '', // placeholder的内容
+    hotList: [], // 热搜榜数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getInitData()
   },
 
+  // 获取初始化数据
+  async getInitData() {
+    let placeholderData = await request('/search/default')
+    let hostListData = await request('/search/hot/detail')
+    this.setData({
+      placeholderContent: placeholderData.data.showKeyword,
+      hotList: hostListData.data
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
