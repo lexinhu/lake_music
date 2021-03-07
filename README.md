@@ -26,7 +26,9 @@ lake_music                      // 小湖音乐
 ├── static                      // 静态资源
 ```
 
-后端应用来自民间大神的 node 版本：https://binaryify.github.io/NeteaseCloudMusicApi/，但由于大神保持着更新，某些接口地址和参数会更换，所以建议大家使用我项目里的 **lakeMusic_api_server**，在该目录下执行 `npm start` 即可启动后端。
+后端应用来自民间大神的 node 版本：https://binaryify.github.io/NeteaseCloudMusicApi/
+
+但由于大神保持着更新，某些接口地址和参数会更换，所以建议大家使用我项目里的 **lakeMusic_api_server**，在该目录下执行 `npm start` 即可启动后端。
 
 ## 项目截图
 
