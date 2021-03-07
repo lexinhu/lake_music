@@ -1,4 +1,5 @@
 import request from '../../utils/request'
+let timeOut = false;
 Page({
 
   /**
@@ -7,6 +8,8 @@ Page({
   data: {
     placeholderContent: '', // placeholder的内容
     hotList: [], // 热搜榜数据
+    searchContent: '', // 搜索内容
+    searchList: [], // 关键字模糊匹配的数据
   },
 
   /**
@@ -25,6 +28,41 @@ Page({
       hotList: hostListData.data
     })
   },
+
+  // 表单项内容发生改变的回调
+  handleInputChange(event) {
+    this.setData({
+      searchContent: event.detail.value.trim()
+    })
+    // 当表单项内容为空时，将结果直接清空并return出这个函数，避免后续节流出现一系列问题
+    if (!this.data.searchContent) {
+      this.setData({
+        searchList: []
+      })
+      return;
+    }
+    if (timeOut) {
+      console.log('触发节流，不执行回调');
+      return;
+    }
+    timeOut = true;
+    this.getSearchList();
+    // 函数节流
+    setTimeout(() => {
+      timeOut = false
+    }, 300)
+  },
+
+  async getSearchList() {
+    let searchListData = await request('/search', {
+      keywords: this.data.searchContent,
+      limit: 10,
+    })
+    this.setData({
+      searchList: searchListData.result.songs
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

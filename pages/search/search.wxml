@@ -3,20 +3,34 @@
   <view class="header">
     <view class="searchInput">
       <text class="iconfont icon-custom-search searchIcon"></text>
-      <input type="text" placeholder="{{placeholderContent}}" />
+      <input type="text" placeholder="{{placeholderContent}}" bindinput="handleInputChange" />
     </view>
     <text class="cancel">取消</text>
   </view>
-  <!-- 热搜榜 -->
-  <view class="hotContainer">
-    <view class="title">热搜榜</view>
-    <view class="hotList">
-      <!-- 热搜列表 -->
-      <view class="hotItem" wx:for="{{hotList}}" wx:key="index">
-        <text class="order">{{index+1}}</text>
-        <text>{{item.searchWord}}</text>
-        <image class="iconImg" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}"></image>
+  <!-- 搜索内容 -->
+  <block wx:if="{{searchList.length}}">
+    <view class="showSearchContent">
+      <view class="searchContent">搜索内容：{{searchContent}}</view>
+      <view class="searchList">
+        <view class="searchItem" wx:for="{{searchList}}" wx:key="id">
+          <text class="iconfont icon-custom-search searchIcon"></text>
+          <text class="content">{{item.name}}</text>
+        </view>
       </view>
     </view>
-  </view>
+  </block>
+  <!-- 热搜榜 -->
+  <block wx:else>
+    <view class="hotContainer">
+      <view class="title">热搜榜</view>
+      <view class="hotList">
+        <!-- 热搜列表 -->
+        <view class="hotItem" wx:for="{{hotList}}" wx:key="index">
+          <text class="order">{{index+1}}</text>
+          <text>{{item.searchWord}}</text>
+          <image class="iconImg" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}"></image>
+        </view>
+      </view>
+    </view>
+  </block>
 </view>

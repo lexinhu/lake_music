@@ -3,7 +3,7 @@ import config from '../config/config'
 export default (url, data = {}, method = 'GET') => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: config.removeHost + url,
+      url: config.host + url,
       // url: config.ddnsHost + url,
       data,
       method,

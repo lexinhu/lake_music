@@ -93,6 +93,13 @@ Page({
     this.getVideoListData(this.data.navId)
   },
 
+  // 跳转搜索页
+  toSearch(){
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
+  },
+
   // 自定义上拉触底的回调
   handleToLower() {
 

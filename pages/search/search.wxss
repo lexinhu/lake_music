@@ -1,3 +1,7 @@
+.searchContainer {
+  padding: 0 20rpx;
+}
+
 .header {
   display: flex;
   height: 60rpx;
@@ -32,11 +36,11 @@
 }
 
 /* 热搜榜样式 */
-.hostContainer .title {
-  font-size: 28rpx;
+.hotContainer .title {
+  /* font-size: 28rpx; */
   height: 80rpx;
   line-height: 80rpx;
-  border-bottom: 1rpx solid rgba(238, 238, 238, 0.486);
+  /* border-bottom: 1rpx solid #CCCCFF; */
 }
 
 .hotList {
@@ -55,8 +59,29 @@
   margin: 0 10rpx;
 }
 
-.hotItem .iconImg{
+.hotItem .iconImg {
   width: 35rpx;
   height: 20rpx;
   margin-left: 10rpx;
+}
+
+.searchContent {
+  color: rgb(47, 45, 83);
+  /* font-size: 28rpx; */
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #7373be;
+}
+
+.searchItem {
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  border-bottom: 1rpx solid #c0c0c5a4;
+}
+
+.searchItem .content {
+  flex: 1;
+  margin-left: 32rpx;
+  font-size: 26rpx;
 }

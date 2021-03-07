@@ -1,6 +1,7 @@
 <view class="indexContainer">
   <!-- 轮播图区域 -->
-  <swiper class="banners" indicator-dots indicator-color='ivory' indicator-active-color='#666699' autoplay interval='2800' easing-function='linear' circular>
+  <swiper class="banners" indicator-dots indicator-color='ivory' indicator-active-color='#666699' autoplay
+    interval='2800' easing-function='linear' circular>
     <swiper-item wx:for="{{bannerList}}" wx:key="bannerId">
       <image src="{{item.pic}}"></image>
     </swiper-item>
@@ -19,9 +20,9 @@
       <text class="iconfont icon-paihangbang-"></text>
       <text>排行榜</text>
     </view>
-    <view class="navItem">
-      <text class="iconfont icon-diantai"></text>
-      <text>电台</text>
+    <view class="navItem" bindtap="toSearch">
+      <text class="iconfont icon-custom-search"></text>
+      <text>搜索音乐</text>
     </view>
     <!-- <view class="navItem">
       <text class="iconfont icon-zhibobofangshexiangjiguankanxianxing"></text>
@@ -34,7 +35,8 @@
     <NavHeader title='推荐歌单' nav='为你精心挑选'></NavHeader>
     <!-- 内容区域 -->
     <scroll-view class="recommendScroll" enable-flex scroll-x>
-      <view class="scrollItem" wx:for="{{recommendList}}" wx:key='id' wx:for-item='recommendItem' data-id="{{recommendItem.id}}" bindtap='toSongListDetail'>
+      <view class="scrollItem" wx:for="{{recommendList}}" wx:key='id' wx:for-item='recommendItem'
+        data-id="{{recommendItem.id}}" bindtap='toSongListDetail'>
         <image src="{{recommendItem.picUrl}}"></image>
         <text>{{recommendItem.name}}</text>
       </view>
@@ -49,7 +51,8 @@
       <swiper-item wx:for="{{topList}}" wx:key="name">
         <view class="swiperItem">
           <view class="title">{{item.name}}</view>
-          <view class="musicItem" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="musicItem" wx:for-index="musicId" data-list-index="{{index}}" data-music-index="{{musicId}}" data-song="{{musicItem}}" bindtap="toSongDetail">
+          <view class="musicItem" wx:for="{{item.tracks}}" wx:key="id" wx:for-item="musicItem" wx:for-index="musicId"
+            data-list-index="{{index}}" data-music-index="{{musicId}}" data-song="{{musicItem}}" bindtap="toSongDetail">
             <image src="{{musicItem.al.picUrl}}"></image>
             <text class="count">{{index+1}}</text>
             <text class="musicName">{{musicItem.name}}</text>
