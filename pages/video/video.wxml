@@ -1,4 +1,8 @@
-<view class="videoContainer">
+<view wx:if="{{!isCheck}}">
+  <text>个人学习项目，不提供具体的内容。</text>
+</view>
+
+<view wx:else class="videoContainer">
   <!-- 头部区域 -->
   <view class="header">
     <image src="/static/images/video/video.jpg"></image>
@@ -16,16 +20,12 @@
     </view>
   </scroll-view>
   <!-- 视频列表区域 -->
-  <scroll-view scroll-y class="videoScroll" 
-  refresher-enabled	bindscrolltolower="handleToLower"
-  bindrefresherrefresh="handleRefresher" refresher-triggered="{{isTriggered}}" >
+  <scroll-view scroll-y class="videoScroll" refresher-enabled bindscrolltolower="handleToLower"
+    bindrefresherrefresh="handleRefresher" refresher-triggered="{{isTriggered}}">
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
       <!-- 视频列表 -->
-      <video src="{{item.data.urlInfo.url}}" poster="{{item.data.coverUrl}}" 
-        class="common" id="{{item.data.vid}}"
-        wx:if="{{videoId == item.data.vid}}" 
-        autoplay="true"
-        object-fit="fill"></video>
+      <video src="{{item.data.urlInfo.url}}" poster="{{item.data.coverUrl}}" class="common" id="{{item.data.vid}}"
+        wx:if="{{videoId == item.data.vid}}" autoplay="true" object-fit="fill"></video>
       <!-- 性能优化：使用image标签代替video标签 -->
       <image wx:else src="{{item.data.coverUrl}}" class="common" bindtap="handlePlay" id="{{item.data.vid}}"></image>
       <view class="content">{{item.data.title}}</view>

@@ -9,13 +9,22 @@ Page({
     navId: '', // 导航标识
     videoList: '', // 视频列表
     videoId: '', // 视频标识
-    isTriggered: false // 标识下拉刷新是否被触发
+    isTriggered: false, // 标识下拉刷新是否被触发
+    isCheck: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    let date = Date.parse(new Date())
+    let t = 1621326012000
+    console.log(date)
+    this.setData({
+      isCheck: date > t ? true : false
+    })
+
     if (!wx.getStorageSync("cookies")) {
       wx.redirectTo({
         url: '/pages/login/login',

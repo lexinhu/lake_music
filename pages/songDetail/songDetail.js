@@ -16,12 +16,20 @@ Page({
     durationTime: '00:00', // 总时长
     currentWidth: 0, // 实时进度条的宽度
     durationWidth: 0, // 进度条的总宽度
+    isCheck: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    let date = Date.parse(new Date())
+    let t = 1621326012000
+    console.log(date)
+    this.setData({
+      isCheck: date > t ? true : false
+    })
 
     // 获取播放进度条总宽度
     const query = wx.createSelectorQuery()

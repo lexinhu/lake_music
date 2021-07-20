@@ -1,4 +1,7 @@
-<view class="songDetailContainer">
+<view wx:if="{{!isCheck}}">
+  <text>个人学习项目，不提供具体的内容。</text>
+</view>
+<view wx:else class="songDetailContainer">
   <view class="author">{{song.ar[0].name}}</view>
   <view class="circle"></view>
   <image class="needle {{isPlay && 'needleRotate'}}" src="/static/images/song/needle.png"></image>
